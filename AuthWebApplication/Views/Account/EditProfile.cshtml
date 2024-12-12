@@ -1,0 +1,81 @@
+﻿@model AuthWebApp.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h2 class="mb-5">Edit Profile</h2>
+
+            <!-- Profile Image at the top -->
+            <div class="text-center mb-4">
+                <img src="@Model.ImageUrl" alt="Profile Picture" class="img-fluid rounded-circle border" style="width: 150px; height: 150px; object-fit: cover;" />
+            </div>
+
+            <form asp-action="EditProfile" method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="col-6">
+                        <!-- First Name input -->
+                        <div data-mdb-input-init class="form-outline mb-30">
+                            <input type="text" class="form-control @(ViewData.ModelState["FirstName"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="FirstName" />
+                            <label class="form-label" asp-for="FirstName">First Name</label>
+                            <span asp-validation-for="FirstName" class="invalid-feedback"></span>
+                        </div>                       
+                    </div>
+                    <div class="col-6">
+                        <!-- Last Name input -->
+                        <div data-mdb-input-init class="form-outline mb-30">
+                            <input type="text" class="form-control @(ViewData.ModelState["LastName"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="LastName" />
+                            <label class="form-label" asp-for="LastName">Last Name</label>
+                            <span asp-validation-for="LastName" class="invalid-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">                        
+                        <!-- Email input (read-only) -->
+                        <div data-mdb-input-init class="form-outline mb-30">
+                            <input type="email" class="form-control @(ViewData.ModelState["Email"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Email" readonly />
+                            <label class="form-label" asp-for="Email">Email</label>
+                            <span asp-validation-for="Email" class="invalid-feedback"></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <!-- Birth Date input -->
+                        <div data-mdb-input-init class="form-outline mb-30">
+                            <input type="date" class="form-control @(ViewData.ModelState["BirthDate"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="BirthDate" />
+                            <label class="form-label" asp-for="BirthDate">Birth Date</label>
+                            <span asp-validation-for="BirthDate" class="invalid-feedback"></span>
+                        </div>
+                    </div>
+                </div>                              
+
+                <!-- Gender select -->
+                <div data-mdb-input-init class="form-outline border mb-30">
+                            <select class="form-control @(ViewData.ModelState["Gender"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Gender">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <label class="form-label" asp-for="Gender"></label>
+                            <span asp-validation-for="Gender" class="invalid-feedback"></span>
+                        </div> 
+
+                <!-- Profile Picture input -->
+                <div data-mdb-input-init class="form-outline mt-5 mb-30">
+                    <label>Profile Picture</label>
+                    <input type="file" class="form-control @(ViewData.ModelState["ImageUrl"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="ImageUrl" name="ProfileImage" />
+                    <span asp-validation-for="ImageUrl" class="invalid-feedback"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>

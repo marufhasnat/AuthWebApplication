@@ -1,0 +1,53 @@
+﻿@model ResponseVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 offset-3" style="top:50%; right:25%;">
+            @if (Model.Message == "Something went wrong! Please try again.")
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Model.Message
+                </div>
+            }
+            else if (Model.Message == "Your email is already verified.")
+            {
+                <div class="alert alert-info" role="alert">
+                    @Model.Message. You can now log in by clicking
+                    <a asp-action="Login" asp-controller="Account" class="btn btn-sm btn-primary">Login</a>
+                </div>
+            }
+            else if (Model.Message == "Your password has been successfully reset.")
+            {
+                <div class="alert alert-success" role="alert">
+                    @Model.Message, if you want to login, click <a asp-action="Login" asp-controller="Account" class="btn btn-sm btn-primary">Login</a>
+                </div>
+            }
+            else if (Model.Message == "Thank you for confirming your E-mail.")
+            {
+                <div class="alert alert-success" role="alert">
+                    @Model.Message, if you want to login then click <a asp-action="Login" asp-controller="Account" class="btn btn-sm btn-primary">Login</a>
+                </div>
+            }
+            else if (Model.Message == "Please check your email for the verification.")
+            {
+                <div class="alert alert-success" role="alert">
+                    @Model.Message
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    Your <strong>@Model.Message</strong> has been sent to Registered Email, kindly check, your email to reset your password.
+                </div>
+            }
+            <div class="d-grid">
+                <a asp-action="Login" asp-controller="Account" class="btn btn-warning btn-block">Back</a>
+            </div>
+        </div>
+    </div>
+</div>

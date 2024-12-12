@@ -1,0 +1,96 @@
+﻿@model RegisterVM
+
+@{
+    Layout = "~/Views/Shared/_LayoutLoginRegister.cshtml";
+}
+
+<div class="tab-pane fade show active mt-4">
+    <form asp-action="Register" asp-controller="Account" method="post" class="register-form">
+        @* <div class="text-center mb-3">
+            <p>Sign up with:</p>
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+            </button>
+
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-google"></i>
+            </button>
+
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+            </button>
+
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-github"></i>
+            </button>
+        </div>
+
+        <p class="text-center">or:</p> *@
+
+        @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+        <div asp-validation-summary="ModelOnly" class="alert-validation-summary" role="alert"></div>
+
+        <div class="row">
+            <div class="col-6">
+                <div data-mdb-input-init class="form-outline mb-30">
+                    <input type="text" class="form-control @(ViewData.ModelState["FirstName"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="FirstName" />
+                    <label class="form-label" asp-for="FirstName">First Name</label>
+                    <span asp-validation-for="FirstName" class="invalid-feedback"></span>
+                </div>
+            </div>
+            <div class="col-6">
+                <div data-mdb-input-init class="form-outline mb-30">
+                    <input type="text" class="form-control @(ViewData.ModelState["LastName"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="LastName" />
+                    <label class="form-label" asp-for="LastName">Last Name</label>
+                    <span asp-validation-for="LastName" class="invalid-feedback"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Username input -->
+        <div data-mdb-input-init class="form-outline mb-30">
+            <input type="text" class="form-control @(ViewData.ModelState["Username"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Username" />
+            <label class="form-label" asp-for="Username">Username</label>
+            <span asp-validation-for="Username" class="invalid-feedback"></span>
+        </div>
+
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline mb-30">
+            <input type="email" class="form-control @(ViewData.ModelState["Email"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Email" />
+            <label class="form-label" asp-for="Email">Email</label>
+            <span asp-validation-for="Email" class="invalid-feedback"></span>
+        </div>
+
+        <!-- Password input -->
+        <div data-mdb-input-init class="form-outline mb-30">
+            <input type="password" class="form-control @(ViewData.ModelState["Password"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Password" />
+            <label class="form-label" asp-for="Password">Password</label>
+            <span asp-validation-for="Password" class="invalid-feedback"></span>
+        </div>
+
+        <!-- Repeat Password input -->
+        <div data-mdb-input-init class="form-outline mb-30">
+            <input type="password" class="form-control @(ViewData.ModelState["ConfirmPassword"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="ConfirmPassword" />
+            <label class="form-label" asp-for="ConfirmPassword">Confirm Password</label>
+            <span asp-validation-for="ConfirmPassword" class="invalid-feedback"></span>
+        </div>
+
+        @* <!-- Status Checkbox --> *@
+        <span asp-validation-for="Status" class="invalid-feedback" style="display: block; margin-top: 1.5rem; font-size: 0.9rem;  color: #dc3545;"></span>
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input @(ViewData.ModelState["Status"]?.Errors.Count > 0 ? "is-invalid" : "")" asp-for="Status" />
+            <label class="form-check-label" asp-for="Status">
+                I have read and agree to the terms
+            </label>
+        </div>
+
+
+
+        <!-- Submit button -->
+        <button type="submit" data-mdb-ripple-init class="btn btn-primary btn-block mb-3">Register</button>
+    </form>
+</div>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

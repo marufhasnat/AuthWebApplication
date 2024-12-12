@@ -1,0 +1,65 @@
+﻿﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+@if (signInManager.IsSignedIn(User)){
+    <div class="d-flex align-items-center">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a data-mdb-ripple-init
+                   class="btn btn-primary px-3 me-3"
+                   asp-action="EditProfile" asp-controller="Account" title="EditProfile"
+                   role="button">
+                    <i class="fa fa-user-pen"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-mdb-ripple-init
+                   class="btn btn-danger px-3 me-3"
+                   asp-action="Logout" asp-controller="Account" title="Logout"
+                   role="button">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-mdb-ripple-init
+                   class="btn btn-dark px-3"
+                   href="https://github.com/marufhasnat"
+                   role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </li>            
+        </ul>
+    </div>
+}
+else{
+    <div class="d-flex align-items-center">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a data-mdb-ripple-init
+                   class="btn btn-link px-3 me-3"
+                   asp-action="Login" asp-controller="Account"
+                   role="button">
+                   Login
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-mdb-ripple-init
+                   class="btn btn-primary px-3 me-3"
+                   asp-action="Register" asp-controller="Account"
+                   role="button">
+                    Register
+                </a>
+            </li>
+            <li class="nav-item">
+                <a data-mdb-ripple-init
+                   class="btn btn-dark px-3"
+                   href="https://github.com/marufhasnat"
+                   target="_blank"
+                   role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+}
