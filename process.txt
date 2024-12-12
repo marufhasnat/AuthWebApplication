@@ -1,0 +1,33 @@
+Note: Don't use same name for Main Application Folder with DataAccess and Models
+
+Install:
+
+1) Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+2) Microsoft.EntityFrameworkCore.SqlServer
+
+3) Microsoft.EntityFrameworkCore.Tools
+
+4) Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+For DataAccess, install:
+
+1) Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+2) Microsoft.EntityFrameworkCore
+
+3) Microsoft.EntityFrameworkCore.SqlServer
+
+4) Microsoft.EntityFrameworkCore.Tools
+
+For Models, install:
+
+1) Microsoft.Extensions.Identity.Stores
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Errors:
+
+Error 1: 'IConfiguration' does not contain a definition for 'GetValue' and no accessible extension method 'GetValue' accepting a first argument of type 'IConfiguration' could be found (are you missing a using directive or an assembly reference?)
+
+Solve 1: Install Microsoft.Extensions.Configuration.Binder
